@@ -50,6 +50,7 @@ const students = [
     class: 9,
   },
 ];
+// 1. Get the object with classes and average values
 
 const newClassObject = students.reduce((accumulator, currentValue) => {
   let key = currentValue.class;
@@ -63,8 +64,6 @@ const newClassObject = students.reduce((accumulator, currentValue) => {
   return accumulator;
 }, {});
 
-console.log(newClassObject);
-
 for (let classes in newClassObject) {
   let gradesArray = newClassObject[classes];
   const averageGradesArray =
@@ -73,6 +72,8 @@ for (let classes in newClassObject) {
   newClassObject[classes] = averageGradesArray;
 }
 console.log(newClassObject);
+
+// 2. Get the object with classes and students names
 
 const newClassStudentsObject = students.reduce((accumulator, currentValue) => {
   if (!accumulator[currentValue.class]) {
@@ -84,6 +85,8 @@ const newClassStudentsObject = students.reduce((accumulator, currentValue) => {
 }, {});
 
 console.log(newClassStudentsObject);
+
+// 3. Get the object with classes and students whose grade is higher or equal than 5
 
 const newStudentsObjectWithHighestGrades = students.reduce(
   (accumulator, currentValue) => {
