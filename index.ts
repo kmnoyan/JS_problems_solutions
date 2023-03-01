@@ -63,7 +63,7 @@ const newClassObject = students.reduce((accumulator, currentValue) => {
   return accumulator;
 }, {});
 
-// console.log(newClassObject);
+console.log(newClassObject);
 
 for (let classNumbers in newClassObject) {
   let gradesArray = newClassObject[classNumbers];
@@ -73,3 +73,17 @@ for (let classNumbers in newClassObject) {
   newClassObject[classNumbers] = averageGradesArray;
 }
 console.log(newClassObject);
+
+const newClassStudentsObject = students.reduce((accumulator, currentValue) => {
+  let key = currentValue.class;
+  let value = currentValue.studentName;
+
+  if (!accumulator[key]) {
+    accumulator[key] = [];
+  }
+  accumulator[key].push(value);
+
+  return accumulator;
+}, {});
+
+console.log(newClassStudentsObject);
