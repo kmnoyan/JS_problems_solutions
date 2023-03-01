@@ -65,25 +65,36 @@ const newClassObject = students.reduce((accumulator, currentValue) => {
 
 console.log(newClassObject);
 
-for (let classNumbers in newClassObject) {
-  let gradesArray = newClassObject[classNumbers];
+for (let classes in newClassObject) {
+  let gradesArray = newClassObject[classes];
   const averageGradesArray =
     gradesArray.reduce((a, b) => a + b, 0) / gradesArray.length;
 
-  newClassObject[classNumbers] = averageGradesArray;
+  newClassObject[classes] = averageGradesArray;
 }
 console.log(newClassObject);
 
 const newClassStudentsObject = students.reduce((accumulator, currentValue) => {
-  let key = currentValue.class;
-  let value = currentValue.studentName;
-
-  if (!accumulator[key]) {
-    accumulator[key] = [];
+  if (!accumulator[currentValue.class]) {
+    accumulator[currentValue.class] = [];
   }
-  accumulator[key].push(value);
+  accumulator[currentValue.class].push(currentValue.studentName);
 
   return accumulator;
 }, {});
 
 console.log(newClassStudentsObject);
+
+const newStudentsObjectWithHighestGrades = students.reduce(
+  (accumulator, currentValue) => {
+    if (!accumulator[currentValue.class]) {
+      accumulator[currentValue.class] = [];
+    }
+    if (currentValue.score >= 5) {
+      accumulator[currentValue.class].push(currentValue.studentName);
+    }
+    return accumulator;
+  },
+  {}
+);
+console.log(newStudentsObjectWithHighestGrades);
